@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-warning alert-dismisable" role="alert">
+                <button class="close" data-dismiss='alert'>
+                    <small><sup>x</sup></small>
+                </button>
+                {{message}}
+            </div>
+
+        {% endfor %}
+    {% endif %}
+
+    {% if allitems %}
+            {% for things in allitems %}
+                {{ things.item }} | {{things.completed}}<br>
+            {% endfor %}
+    {% endif %}
+
+
+
+{% endblock %}
