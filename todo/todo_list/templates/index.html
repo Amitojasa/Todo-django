@@ -13,11 +13,25 @@
 
         {% endfor %}
     {% endif %}
-
+    
     {% if allitems %}
+        <table class="table table-bordered">
             {% for things in allitems %}
-                {{ things.item }} | {{things.completed}}<br>
+            {% if things.completed %}
+                <tr class="table-secondary">
+                    <td><strike><a href="edit/{{things.id}}"> {{ things.item }}</a></strike></td>
+                    <td><center><a href="uncross/{{things.id}}">Un-cross</a></center></td>
+                    <td><center><a href="delete/{{things.id}}"> Delete</a></center></td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td><a href="edit/{{things.id}}">{{ things.item }}</a></td>
+                    <td><center><a href="cross/{{things.id}}">Cross</a></center></td>
+                    <td><center><a href="delete/{{things.id}}"> Delete</a></center></td>
+                </tr>
+            {% endif %}
             {% endfor %}
+        </table>
     {% endif %}
 
 
